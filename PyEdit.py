@@ -13,11 +13,14 @@ def newFile():
 
 def saveFile():
     global filename
-    t = text.get(0.0, END)
-    #open filename with write permisions
-    f = open(filename, 'w')
-    f.write(t)
-    f.close()
+    try:
+        t = text.get(0.0, END)
+        #open filename with write permisions
+        f = open(filename, 'w')
+        f.write(t)
+        f.close()
+    except:
+        saveAs()
 
 def saveAs():
     f = asksaveasfile(mode = 'w', defaultextension='.txt')
@@ -35,8 +38,9 @@ def openFile():
     text.insert(0.0, t)
 
 root = Tk()
-root.title("MyTextEdit")
+root.title("PyEdit")
 root.minsize(width=400, height=400)
+root.maxsize(width=400, height=400)
 #display text box
 text = Text(root, width=400, height = 400)
 text.pack()
@@ -46,8 +50,10 @@ filemenu = Menu(menubar)
 filemenu.add_command(label="New", command=newFile)
 filemenu.add_command(label="Open", command=openFile)
 filemenu.add_command(label="Save", command=saveFile)
+filemenu.add_command(label="Save As", command=saveAs)
 filemenu.add_separator()
-filemenu.add_command(label="Quit", command=root.quit)
+#root.destroy is better to use because it destroys the main program loop
+filemenu.add_command(label="Quit", command=root.destroy)
 menubar.add_cascade(label="File", menu=filemenu)
 
 root.config(menu=menubar)
