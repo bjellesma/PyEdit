@@ -24,3 +24,4 @@
   <p>This program is a project for Udacity's full stack developer nanodegree program.
   This particular project was authored by William Jellesma. An API by IMDB called IMDbpY is also being used</p>
 <a name="Screenshot"><h1>Screenshot</h1></a>
+<img src="sample.PNG">
